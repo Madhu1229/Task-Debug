@@ -1,0 +1,32 @@
+{
+  "name": "Task 2",
+  "version": "0.1.12",
+  "description": "This is a desktop application that fetches your blood sugar fromAPI",
+  "license": "Apache-2.0",
+  "author": "Crazy Marvin & Contributors (especially Yuran) <marvin@poopjournal.rocks> (https://crazymarvin.com/Task 2/)",
+  "homepage": "https://github.com/Crazy-Marvin/Task 2",
+    "bugs": {
+    "url": "https://github.com/Crazy-Marvin/Task 2/issues",
+    "email": "marvin@poopjournal.rocks"
+  },
+    "funding": {
+    "type": "individual",
+    "url": "https://poopjournal.rocks/blog/donate/"
+  },
+  "keywords": [
+    "diabetes",
+    "librelink",
+    "librelinkup",
+    "blood sugar",
+    "health",
+    "desktop",
+    "electron"
+  ],
+  "main": "./dist/main/main.js",
+  "scripts": {
+    "rebuild": "node -r ts-node/register ../../.erb/scripts/electron-rebuild.js",
+    "postinstall": "npm run rebuild && npm run link-modules",
+    "link-modules": "node -r ts-node/register ../../.erb/scripts/link-modules.ts"
+  },
+  "dependencies": {}
+}
