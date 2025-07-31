@@ -59,7 +59,8 @@ const createWindow = async () => {
 
   mainWindow = new BrowserWindow(windowOptions);
 
-  mainWindow.isPrimary = true;
+ //.................new
+ (mainWindow as any).isPrimary = true;
 
   // 👉 save window state
   const defaultWindowState: WindowState = {

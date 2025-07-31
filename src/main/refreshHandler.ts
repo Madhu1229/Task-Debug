@@ -1,4 +1,8 @@
-import { BrowserWindow, ipcMain } from "electron"
+import { BrowserWindow, ipcMain } from "electron";
+
+interface CustomBrowserWindow extends BrowserWindow {
+  isPrimary?: boolean;
+}
 
 export const registerRefreshHandler = () => {
   ipcMain.on('refresh-all', () => {
@@ -11,14 +15,15 @@ export const registerRefreshHandler = () => {
 
   ipcMain.on('refresh-primary', () => {
     BrowserWindow.getAllWindows().forEach(window => {
-      if (window.isPrimary && window.webContents) {
-        window.webContents.reload();
+      const win = window as CustomBrowserWindow;
+      if (win.isPrimary && win.webContents) {
+        win.webContents.reload();
       }
     });
   });
-}
+};
 
 export const destroyRefreshHandler = () => {
   ipcMain.removeAllListeners('refresh-all');
-  ipcMain.removeAllListeners('refresh-primary')
-}
+  ipcMain.removeAllListeners('refresh-primary');
+};
